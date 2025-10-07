@@ -1,0 +1,32 @@
+<!-- templates/register.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="form-container1">
+    <h1>Create Account</h1>
+    <form method="POST" class="cd-form">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">📝 Register</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <p style="color: red; font-weight: bold;">⚠️ {{ messages[0] }}</p>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('login') }}">🔙 Back to Login</a>
+</div>
+</body>
+</html>

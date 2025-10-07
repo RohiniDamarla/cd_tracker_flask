@@ -1,0 +1,22 @@
+<!-- templates/confirm_reset.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Password Change</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="form-container1">
+    <h2>Password Change Confirmation</h2>
+    <p>If you changed your password, no action is needed.</p>
+    <p>If you did <strong>not</strong> change your password, click below to secure your account:</p>
+
+    <form method="POST" action="{{ url_for('report_fraud') }}">
+        <input type="hidden" name="username" value="{{ username }}">
+        <button type="submit" name="fraud" value="yes">❌ No, this wasn't me</button>
+    </form>
+
+    <a href="{{ url_for('login') }}">✅ Yes, I changed it</a>
+</div>
+</body>
+</html>

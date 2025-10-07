@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | CD Tracker</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .form-container1 {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .cd-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .cd-form input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .cd-form button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .cd-form button:hover {
+            background-color: #45a049;
+        }
+        .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #2196F3;
+        }
+        .flash-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container1">
+        <h1>🔐 CD Tracker Login</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div style="color: red; font-weight: bold;">
+      {% for message in messages %}
+        <p>⚠️ {{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+        <form method="POST" class="cd-form">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit">Log In</button>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-message">⚠️ {{ messages[0] }}</div>
+                {% endif %}
+            {% endwith %}
+        </form>
+
+        <div class="links">
+            <a href="{{ url_for('forgotpassword') }}">🔑 Forgot Password</a>
+            <a href="{{ url_for('register') }}">🆕 Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>
