@@ -13,7 +13,7 @@ if not os.path.exists('instance'):
 app = Flask(__name__)
 app.secret_key = 'Riansh@819'  # Replace with something unpredictable in production!
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 📧 Flask-Mail configuration
